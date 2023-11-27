@@ -1,25 +1,25 @@
 package com.example.geektrust.repository.classes;
 
-import com.example.geektrust.database.table.CourseTable;
-import com.example.geektrust.entities.Course;
+import com.example.geektrust.database.table.CourseOfferingTable;
+import com.example.geektrust.entities.CourseOffering;
 import com.example.geektrust.repository.interfaces.ICourseRepository;
 
 public class CourseRepository implements ICourseRepository {
 
-    private static CourseTable courseTable=new CourseTable();
+    private static CourseOfferingTable courseOfferingTable =new CourseOfferingTable();
     @Override
-    public Course addCourseOffering(Course course) {
-        courseTable.addCourse(course.getCourseOfferingId(),course);
+    public CourseOffering addCourseOffering(CourseOffering course) {
+        courseOfferingTable.addCourse(course.getCourseOfferingId(),course);
         return course;
     }
 
     @Override
-    public Course cancelCourseOffering(Course course) {
+    public CourseOffering cancelCourseOffering(CourseOffering courseOffering) {
         return null;
     }
 
     @Override
-    public Course getCourseByOfferingId(String courseOfferingId) {
-        return  courseTable.getCourseById(courseOfferingId);
+    public CourseOffering getCourseByOfferingId(String courseOfferingId) {
+        return  courseOfferingTable.getCourseById(courseOfferingId);
     }
 }

@@ -21,7 +21,7 @@ public class CourseSchedulingService {
                 FileParserFactory.getFileParserService(fileType);
         List<String[]> commands=fileParserService.parseFile(filePath);
         startCommandsExecution(commands);
-        printCommands(commands);
+       // printCommands(commands);
     }
     private void printCommands(List<String[]> commands){
         for(String[] command : commands){
@@ -33,10 +33,11 @@ public class CourseSchedulingService {
 
     private void startCommandsExecution(List<String[]> commands)  {
         for(String command[]:commands) {
-            basicCommandValidator.doBasicValidation(command);
-            ICommandExecutorService commandExecutorService=
-                    CommandExecutorFactory.getCommandExecutor(command[0]);
+
             try{
+                basicCommandValidator.doBasicValidation(command);
+                ICommandExecutorService commandExecutorService=
+                        CommandExecutorFactory.getCommandExecutor(command[0]);
                 commandExecutorService.execute(command);
             }
             catch (InvalidInputException invalidInputException){

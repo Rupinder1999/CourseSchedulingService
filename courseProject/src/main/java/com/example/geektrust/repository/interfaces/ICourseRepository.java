@@ -1,9 +1,9 @@
 package com.example.geektrust.repository.interfaces;
 
-import com.example.geektrust.entities.Course;
+import com.example.geektrust.entities.CourseOffering;
 
 public interface ICourseRepository {
-    public Course addCourseOffering(Course course);
-    public Course cancelCourseOffering(Course course);
-    public Course getCourseByOfferingId(String courseOfferingId);
+    public CourseOffering addCourseOffering(CourseOffering courseOffering);
+    public CourseOffering cancelCourseOffering(CourseOffering courseOffering);
+    public CourseOffering getCourseByOfferingId(String courseOfferingId);
 }

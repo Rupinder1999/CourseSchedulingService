@@ -10,8 +10,5 @@
         <module name="geektrust" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="geektrust" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

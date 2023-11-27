@@ -1,8 +1,8 @@
 package com.example.geektrust.services.command;
 
-import com.example.geektrust.dao.impl.CourseDao;
-import com.example.geektrust.dao.interfaces.ICourseDao;
-import com.example.geektrust.entities.Course;
+import com.example.geektrust.dao.impl.CourseOfferingOfferingDao;
+import com.example.geektrust.dao.interfaces.ICourseOfferingDao;
+import com.example.geektrust.entities.CourseOffering;
 import com.example.geektrust.exception.InvalidInputException;
 import com.example.geektrust.interfaces.services.ICommandExecutorService;
 import com.example.geektrust.model.command.AddOfferingCommand;
@@ -13,7 +13,7 @@ import static com.example.geektrust.constant.ErrorType.INPUT_DATA_ERROR;
 public class AddCourseOfferingCommandExecutorService implements ICommandExecutorService {
     private static AddCourseCommandValidator addCourseCommandValidator=new AddCourseCommandValidator();
 
-    private static ICourseDao courseDao = new CourseDao();
+    private static ICourseOfferingDao courseDao = new CourseOfferingOfferingDao();
 
     public AddCourseOfferingCommandExecutorService(){
 
@@ -29,8 +29,8 @@ public class AddCourseOfferingCommandExecutorService implements ICommandExecutor
           if(!isValid)
               throw new InvalidInputException(INPUT_DATA_ERROR);
           AddOfferingCommand addOfferingCommand=getCommandObject(command);
-          Course course=addCourseToDataBase(addOfferingCommand);
-          System.out.println(course.getCourseOfferingId());
+          CourseOffering courseOffering=addCourseToDataBase(addOfferingCommand);
+          System.out.println(courseOffering.getCourseOfferingId());
     }
 
     // to make this function part of interface
@@ -44,10 +44,10 @@ public class AddCourseOfferingCommandExecutorService implements ICommandExecutor
                 .build();
     }
 
-    private Course addCourseToDataBase(AddOfferingCommand command){
+    private CourseOffering addCourseToDataBase(AddOfferingCommand command){
          String courseOfferingId= generateCourseOfferingID(command.getCourseTitle(),
                          command.getInstructor());
-         Course course=Course.builder()
+         CourseOffering course=CourseOffering.builder()
                  .title(command.getCourseTitle())
                  .instructor(command.getInstructor())
                  .date(command.getDate())

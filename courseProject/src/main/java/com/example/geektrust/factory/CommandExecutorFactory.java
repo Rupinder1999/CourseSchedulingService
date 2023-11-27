@@ -4,6 +4,7 @@ import com.example.geektrust.exception.InvalidInputException;
 import com.example.geektrust.interfaces.services.ICommandExecutorService;
 import com.example.geektrust.services.command.AddCourseOfferingCommandExecutorService;
 import com.example.geektrust.services.command.AllotCommandExecutorService;
+import com.example.geektrust.services.command.CancelCommandExecutorService;
 import com.example.geektrust.services.command.RegisterCommandExecutorService;
 
 import static com.example.geektrust.constant.CommandType.*;
@@ -18,6 +19,8 @@ public class CommandExecutorFactory {
                 return new AllotCommandExecutorService();
             case ADD_COURSE_OFFERING:
                 return new AddCourseOfferingCommandExecutorService();
+            case CANCEL:
+                return new CancelCommandExecutorService();
             default:
                 throw new InvalidInputException(INPUT_DATA_ERROR);
         }
